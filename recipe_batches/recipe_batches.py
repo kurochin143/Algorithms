@@ -3,7 +3,20 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  max = 2**64
+
+  for key in recipe:
+    r_val = recipe[key]
+    if key not in ingredients:
+      return 0 # no such ingredient
+    i_val = ingredients[key]
+    num = int(i_val / r_val)
+    if num == 0:
+      return 0 # not enough ingredient unit
+    if num < max:
+      max = num
+
+  return max
 
 
 if __name__ == '__main__':
